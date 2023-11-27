@@ -34,4 +34,4 @@ jobs:
           git push
         env:
           EXCEL_PATH: 'cloudnativetools.xlsx'
-          JS_PATH: 'entries.js''
+          JS_PATH: 'entries.js'
