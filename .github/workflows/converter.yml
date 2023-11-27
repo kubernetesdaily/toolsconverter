@@ -22,7 +22,7 @@ jobs:
         run: pip install pandas openpyxl
 
       - name: Convert Excel to JSON and write to JS file
-        run: python3 convert_excel_to_json.py
+        run: python3 convert_excel_to_json.py $EXCEL_PATH $JS_PATH
 
       - name: Commit and push changes
         run: |
@@ -33,4 +33,4 @@ jobs:
           git push
         env:
           EXCEL_PATH: 'cloudnativetools.xlsx'
-          JS_PATH: 'entries.js'
+          JS_PATH: 'entries.js''
