@@ -8,6 +8,10 @@ on:
        - '/cloudnativetools.xlsx' # This ensures the action runs only when the Excel file changes.
   workflow_dispatch:
 
+permissions:
+  contents: read
+  pages: write
+  id-token: write
 
  
   
