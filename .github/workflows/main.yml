@@ -22,6 +22,9 @@ jobs:
     steps:
       - name: Check out the repository
         uses: actions/checkout@v3
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }} 
+
 
       - name: Set up Python
         uses: actions/setup-python@v3
@@ -33,7 +36,7 @@ jobs:
 
       - name: Convert Excel to JSON and write to JS file
         run: python3 convert_excel_to_json.py
-
+       
       - name: Commit and push changes
         run: |
           git config --local user.email "action@github.com"
@@ -42,6 +45,6 @@ jobs:
           git commit -m "Convert Excel to JavaScript object" -a || echo "No changes to commit"
           git push
         env:
-          GITHUB_TOKEN: ${{ secrets.MY_GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           EXCEL_PATH: 'cloudnativetools.xlsx'
           JS_PATH: 'entries.js'
