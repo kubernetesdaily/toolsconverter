@@ -1,0 +1,36 @@
+name: Convert Excel to JavaScript Object
+
+on:
+  push:
+    paths:
+      - '/cloudnativetools.xlsx' # This ensures the action runs only when the Excel file changes.
+
+jobs:
+  convert_excel_to_js:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out the repository
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v3
+        with:
+          python-version: '3.8'
+
+      - name: Install Python dependencies
+        run: pip install pandas openpyxl
+
+      - name: Convert Excel to JSON and write to JS file
+        run: python3 convert_excel_to_json.py
+
+      - name: Commit and push changes
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add -A
+          git commit -m "Convert Excel to JavaScript object" -a || echo "No changes to commit"
+          git push
+        env:
+          EXCEL_PATH: 'cloudnativetools.xlsx'
+          JS_PATH: 'entries.js'
