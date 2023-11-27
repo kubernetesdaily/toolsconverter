@@ -38,12 +38,13 @@ jobs:
         run: python3 convert_excel_to_json.py
        
       - name: Commit and push changes
-        run:
-               git config --local user.email "action@github.com"
-               git config --local user.name "GitHub Action"
-               git add -A
-               git commit -m "Convert Excel to JavaScript object" || echo "No changes to commit"
-               git push --set-upstream origin HEAD:main
+        run: |
+           git config --local user.email "action@github.com"
+           git config --local user.name "GitHub Action"
+           git add -A
+           git diff-index --quiet HEAD || git commit -m "Convert Excel to JavaScript object"
+           git push
+
         env:
              GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
              EXCEL_PATH: 'cloudnativetools.xlsx'
