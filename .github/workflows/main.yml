@@ -42,5 +42,6 @@ jobs:
           git commit -m "Convert Excel to JavaScript object" -a || echo "No changes to commit"
           git push
         env:
+          GITHUB_TOKEN: ${{ secrets.MY_GITHUB_TOKEN }}
           EXCEL_PATH: 'cloudnativetools.xlsx'
           JS_PATH: 'entries.js'
