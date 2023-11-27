@@ -2,9 +2,15 @@ name: Convert Excel to JavaScript Object
 
 on:
   push:
-    paths:
-      - '/cloudnativetools.xlsx' # This ensures the action runs only when the Excel file changes.
+   branches: ['main']
 
+   paths:
+       - '/cloudnativetools.xlsx' # This ensures the action runs only when the Excel file changes.
+  workflow_dispatch:
+
+
+ 
+  
 jobs:
   convert_excel_to_js:
     runs-on: ubuntu-latest
