@@ -7,10 +7,10 @@ const entries = [
     "github": "argoproj/argo-cd\n"
   },
   {
-    "title": "agola",
+    "title": "new",
     "link": NaN,
-    "description": "Agola: CI/CD Redefined ",
+    "description": "Declarative continuous deployment for Kubernetes",
     "tag": "Continuous Integration & Delivery",
-    "github": "agola-io/agola"
+    "github": "argoproj/argo-cd"
   }
 ];
